@@ -21,10 +21,12 @@ function Container() {
 function YourResult() {
   return (
     <div className="your-result">
-      <p>Your Result</p>
+      <p className="title">Your Result</p>
       <Score value="76"/>
-      <p className="score-feedback">Great</p>
+      <div className="score-feedback">Great
       <p className="score-comparative">You scored higher than 65% of the people who have taken these tests.</p> {/* Value 65 should be a variable? */}
+      </div>
+      
     </div>
   )
 }
@@ -41,12 +43,14 @@ function Score({value}) {
 function Summary() {
   return (
     <div className="summary">
-      <p>Summary</p>
+      <p className="title">Summary</p>
+      <div className="summary-cards-set">
       {
         cardsData.map(card => (
           <SummaryScoreCard category={card.category} score={card.score} icon={card.icon}/>
         ))
       }
+      </div>
       <Button text="Continue" url=""/>
     </div>
 
@@ -56,9 +60,9 @@ function Summary() {
 function SummaryScoreCard({category, score, icon}) {
   return (
     <div className="summary-card" id={`summary-card-${category}`}>
-      <img src={icon}/>
-      <div>{category}</div>
-      <div>{score} / 100</div>
+      <div className="card-icon"><img src={icon}/></div>
+      <div className="card-category">{category}</div>
+      <div className="card-score"><span className="card-score-value">{score}</span> <span className="card-score-of100">&nbsp;/ 100</span></div>
   </div>
   );
 }
